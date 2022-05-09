@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+}
+
+.app {
+  display: flex;
+  flex-direction: row;
+    
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -31%);
+  
+}
+
+.app__list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 510px;
+  height: 100%;
+}
+
+.app__sidebar {
+    //align-items: stretch;
+    background-color: #bdbdbd;
+}
+
+.app__loader {
+  align-self: center;
+  margin-top: 5rem;
+}

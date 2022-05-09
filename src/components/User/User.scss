@@ -1,0 +1,41 @@
+.user-card {
+  display: flex;
+  flex-direction: row;
+  background-color: #f3f3f3;
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 8px;
+  padding: 10px;
+  padding-top: 2px;
+  margin-top: 24px;
+
+  &__btn {
+    align-self: flex-end;
+    button {
+      border: none;
+      background-color: #f3f3f3;
+      color: #4b51ef;
+      cursor: pointer;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    div {
+      display: flex;
+      flex-direction: row;
+      margin-top: 8px;
+
+      span {
+        color: #a3a3a3;
+        font-size: 11px;
+        margin-right: 7px;
+      }
+      p {
+        font-size: 11px;
+      }
+    }
+  }
+}
