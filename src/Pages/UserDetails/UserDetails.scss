@@ -37,12 +37,13 @@
     padding: 5px;
     padding-left: 10px;
     border: none;
-    cursor: pointer;
+    pointer-events: none;
   }
 }
 
 .details__sumbit-btn--active {
     background: #52CF4F;
+    pointer-events: all;
 }
 
 .details__form {

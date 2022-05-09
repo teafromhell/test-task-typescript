@@ -43,22 +43,12 @@ const UserDetails: React.FC<IUserDetailProps> = ({ users }) => {
     setInputUser({ ...inputUser, comment: e.target.value });
   };
 
-  function isEmpty(user: any) {
-    if (!inputUser.name) return setInputUser({ ...inputUser, name: user.name });
-    if (!inputUser.username)
-      return setInputUser({ ...inputUser, username: user.username });
-    if (!inputUser.email)
-      return setInputUser({ ...inputUser, email: user.email });
-    if (!inputUser.street)
-      return setInputUser({ ...inputUser, street: user.address.street });
-    if (!inputUser.city)
-      return setInputUser({ ...inputUser, city: user.address.city });
-    if (!inputUser.zipcode)
-      return setInputUser({ ...inputUser, zipcode: user.address.zipcode });
-    if (!inputUser.phone)
-      return setInputUser({ ...inputUser, phone: user.phone });
-    if (!inputUser.website)
-      return setInputUser({ ...inputUser, website: user.website });
+  const isEmpty = (user: any) => {
+    if (!inputUser.name) return setInputUser({
+      ...inputUser, name: user.name, username: user.username,
+      email: user.email, street: user.address.street, city: user.address.city, zipcode: user.address.zipcode,
+      phone: user.phone, website: user.website
+    });
   }
 
   const handleSend = () => {
