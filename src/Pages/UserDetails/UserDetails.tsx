@@ -5,8 +5,8 @@ import "./UserDetails.scss";
 
 interface IUserDetailProps {
   users: IUsers[];
-  setData: (arr: any) => void;
 }
+
 const inittialState = {
   name: "",
   username: "",
@@ -25,24 +25,6 @@ const UserDetails: React.FC<IUserDetailProps> = ({ users }) => {
   const [inputError, setInputError] = useState<{ [key: string]: boolean }>({});
   const [errorCheck, setErrorCheck] = useState<boolean>(false);
   const { name } = useParams();
-
-  //   useEffect(() => {
-  //     users.forEach((user) => {
-  //       if (user.name === name) {
-  //         setInputUser({
-  //           comment: "",
-  //           name: user.name,
-  //           username: user.username,
-  //           email: user.email,
-  //           street: user.address.street,
-  //           city: user.address.city,
-  //           zipcode: user.address.zipcode,
-  //           phone: user.phone,
-  //           website: user.website,
-  //         });
-  //       }
-  //     });
-  //   }, []);
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setInputUser({ ...inputUser, [e.target.name]: e.target.value });
@@ -84,13 +66,14 @@ const UserDetails: React.FC<IUserDetailProps> = ({ users }) => {
   };
 
   return (
+
     <div className="details">
       <div className="details__header">
         <b>Профиль пользователя</b>
         <button onClick={() => setReadonly(!isReadonly)}>Редактировать</button>
       </div>
-      {users.map((user) => {
-        if (user.name === name) {
+      {users.filter(user => user.name === name)
+        .map((user) => {
           isEmpty(user);
           return (
             <div key={user.id} className={`details__form`}>
@@ -178,11 +161,12 @@ const UserDetails: React.FC<IUserDetailProps> = ({ users }) => {
               ></textarea>
             </div>
           );
-        }
-      })}
+        })
+      }
       <button className={`details__submit-btn ${!isReadonly ? "details__sumbit-btn--active" : ""}`}
         onClick={handleSend}>Отправить</button>
     </div>
+
   );
 };
 

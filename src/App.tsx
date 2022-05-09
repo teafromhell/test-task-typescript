@@ -7,6 +7,10 @@ import { IUsers } from './types/data'
 import Sidebar from './components/Sidebar/Sidebar';
 import { Routes, Route } from 'react-router-dom';
 import UserDetails from './Pages/UserDetails/UserDetails';
+import Spinner from 'react-bootstrap/Spinner';
+import ScrollToTop from './components/ScrollToTop';
+
+
 
 const App: React.FC = () => {
     const [data, setData] = useState<IUsers[]>([])
@@ -24,13 +28,17 @@ const App: React.FC = () => {
     }
     return (
         <div className='app'>
-            <div className='app__sidebar'><Sidebar users={data} setData={setData} /></div>
-            <div className='app__list'>
-                {loading ? (<Routes>
-                    <Route path='/' element={<UserList users={data} />}></Route>
-                    <Route path='/:name' element={<UserDetails users={data} setData={setData} />}></Route>
-                </Routes>) : (<div className='app__loader'>LOADING</div>)}
-            </div>
+            <ScrollToTop>
+                <div className='app__sidebar'></div><Sidebar users={data} setData={setData} />
+                <div className='app__list'>
+                    {loading ? (<Routes>
+                        <Route path='/' element={<UserList users={data} />}></Route>
+                        <Route path='/:name' element={<UserDetails users={data} />}></Route>
+                    </Routes>) : (<div className='app__loader'>
+                        <Spinner animation="border" variant="primary" />
+                    </div>)}
+                </div>
+            </ScrollToTop>
         </div>
     )
 }
